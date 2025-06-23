@@ -7,9 +7,9 @@ title: Home
 - [Go to Page 2](page2.md)
 
 Local:
+
 - [Daniel Tuzes's personal site](#daniel-tuzess-personal-site)
   - [python](#python)
-
 
 ### python
 
