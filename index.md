@@ -24,7 +24,7 @@ class Solution:
         if amount == 0:
             return 1
         coins = sorted(coins, reverse=True)
-        exchngs = [0 for i in range(amount+1)]  # at i stores the smallest list of coins summing up to i
+        exchngs = [0 for i in range(amount+1)]  # at i stores the number of ways to exchange i amount
         
         for coin in coins:
             for i in range(1,amount+1):
