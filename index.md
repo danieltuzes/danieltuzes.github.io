@@ -13,6 +13,40 @@ Local:
 
 ### python
 
+<details>
+<summary>Coin exchange II</summary>
+
+[leetcode](https://leetcode.com/problems/coin-change-ii/)
+
+```python
+class Solution:
+    def change(self, amount: int, coins: List[int]) -> int:
+        if amount == 0:
+            return 1
+        coins = sorted(coins, reverse=True)
+        exchngs = [0 for i in range(amount+1)]  # at i stores the smallest list of coins summing up to i
+        
+        for coin in coins:
+            for i in range(1,amount+1):
+                last_amount = i-coin
+                if last_amount < 0:
+                   continue
+                if last_amount == 0:
+                   exchngs[i] += 1
+                elif exchngs[last_amount] == 0:
+                   continue
+                
+                exchngs[i] += exchngs[last_amount]
+                
+        
+        return exchngs[amount]
+```
+
+</details>
+
+<details>
+<summary>Twitter</summary>
+
 ```python
 class Twitter:
 
@@ -74,3 +108,4 @@ class Twitter:
 ```
 
 ![statistics for method `-1`](python/image.png)
+</details>
