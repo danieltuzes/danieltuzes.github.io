@@ -47,6 +47,7 @@ class Solution:
 <details>
 <summary>Twitter</summary>
 
+
 ```python
 class Twitter:
 
@@ -108,4 +109,5 @@ class Twitter:
 ```
 
 ![statistics for method `-1`](python/image.png)
+
 </details>
