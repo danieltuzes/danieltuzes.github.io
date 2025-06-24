@@ -1,4 +1,8 @@
-theme: pmarsceill/just-the-docs
-title: Daniel Tuzes's github homepage
-description: Some content I want to share from markdown quickly
-markdown: CommonMarkGhPages
+title: Daniel Tuzes's Site
+description: Personal site hosted with GitHub Pages
+
+remote_theme: just-the-docs/just-the-docs
+markdown: kramdown
+
+plugins:
+  - jekyll-remote-theme
