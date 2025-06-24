@@ -1,4 +1,4 @@
-theme: jekyll-theme-minimal
+theme: pmarsceill/just-the-docs
 title: Daniel Tuzes's github homepage
 description: Some content I want to share from markdown quickly
 markdown: CommonMarkGhPages
