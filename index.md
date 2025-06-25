@@ -14,6 +14,83 @@ Local:
 ### python
 
 <details>
+<summary>Coin exchange I</summary>
+
+[leetcode](https://leetcode.com/problems/coin-change/)
+
+```python
+from typing import List
+from functools import lru_cache
+
+class Solution:
+    def __init__(self):
+        self.memo = {}
+    
+    def coinChange2(self, coins: List[int], amount: int) -> int:
+         # bottom up
+         # coins   1, 2, 7
+         # 1    2    3     4       7    8    9  ...  40 
+         # 1    1    2     2                                  # not this
+         # [1]  [2]  [1,2] [2,2]   []                         # but this
+        if amount == 0:
+            return 0
+        coins = sorted(coins)
+        largest = coins[-1]
+
+        exchngs = [[] for i in range(amount+1)]  # at i stores the smallest list of coins summing up to i
+        for i in range(1,amount+1):
+           for coin in coins:
+                last_amount = i-coin
+                if last_amount < 0:
+                   continue
+                if last_amount == 0:
+                   exchngs[i] = [coin]
+                elif len(exchngs[last_amount]) == 0:
+                   continue
+                if len(exchngs[i]) == 0:
+                   exchngs[i] = exchngs[last_amount] + [coin]
+                elif len(exchngs[i]) > len(exchngs[last_amount]) + 1:
+                   exchngs[i] = exchngs[last_amount] + [coin]
+       
+        length = len(exchngs[amount])
+        if length == 0:
+            return -1
+    
+        return length
+
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        # top down
+        if amount == 0:
+            return 0
+        res = self.coinChgLst(coins, amount)
+        return len(res) if res is not None else -1
+        
+    def coinChgLst(self, coins: List[int], amount: int) -> List[int]:
+        if amount in self.memo:
+            return self.memo[amount]
+        
+        best = None  # shortest list of coins summing up to amount
+        for coin in coins:
+
+            rem = amount-coin
+            if rem == 0:
+                self.memo[amount] = [coin]
+                return [coin]
+            if rem < 0:
+                continue
+            cand = self.coinChgLst(coins, rem)
+            if cand is None:
+                continue  # no solution for this amount
+            if best is None or len(best) > len(cand):
+                best = cand + [coin]
+        
+        self.memo[amount] = best
+        return best
+```
+
+</details>
+
+<details>
 <summary>Coin exchange II</summary>
 
 [leetcode](https://leetcode.com/problems/coin-change-ii/)
@@ -46,7 +123,6 @@ class Solution:
 
 <details>
 <summary>Twitter</summary>
-
 
 ```python
 class Twitter:
