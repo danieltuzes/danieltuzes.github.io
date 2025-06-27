@@ -1,22 +1,111 @@
 ---
-title: Home
+title: interesting problems
 ---
 
-## Daniel Tuzes's personal site
+- [Round table serving problem](#round-table-serving-problem)
+- [Python coding challenges](#python-coding-challenges)
 
-- [Go to Page 2](page2.md)
+## Round table serving problem
 
-Local:
+**Problem Statement**: Consider a round table with people sitting at fixed positions. Food is distributed starting from a marked position, the "head" of the table. At each step, the person currently serving chooses to give the food to either the person on their immediate left or right, with equal probability. This process continues: any person who receives the food then chooses left or right with equal probability, and so on. A person may be served multiple times during this process.
 
-- [Daniel Tuzes's personal site](#daniel-tuzess-personal-site)
-  - [python](#python)
+Your task is to determine **at which position to sit** in order to **maximize the probability of being served last**.
 
-### python
+<details><summary>Solution</summary>
+
+**Notation and Observations**: Let us fix a position at the round table and define the following events:
+
+- **$L$**: the person to the **left** of us is served **before** we are.  
+- **$R$**: the person to the **right** of us is served **before** we are.  
+- **$\mathcal{L}$**: the **left side** of the table is served **before** the right side.  
+- **$\mathcal{R}$**: the **right side** of the table is served **before** the left side.
+
+Note that:
+
+- Eventually, one side must be served before us:
+
+  $$
+  \mathbb{P}(L \cup R) = 1
+  $$
+
+- $\mathcal{L}$ and $\mathcal{R}$ are disjoint and cover the whole probability space:
+
+  $$
+  \mathcal{L} \cap \mathcal{R} = \varnothing, \quad \mathcal{L} \cup \mathcal{R} = \Omega
+  $$
+  $$
+  \Rightarrow \mathbb{P}(\mathcal{L}) + \mathbb{P}(\mathcal{R}) = 1
+  $$
+
+- If a side is served before the other side, then the person on that side is served before us:
+
+  $$
+  \mathcal{L} \subseteq L, \quad \mathcal{R} \subseteq R
+  $$
+
+We want to compute the probability that we are served **last** — that is, both neighbors are served before us:
+
+$$\mathcal{P} := \mathbb{P}(L \cap R)$$
+
+If we plot a graph, we could see that $L \cap R = (L \cap \mathcal{R}) \cup (R \cap \mathcal{L})$ but let's prove it rigorously.
+We decompose both $L$ and $R$ using the partition $\mathcal{L} \cup \mathcal{R} = \Omega$:
+
+$$
+\begin{aligned}
+L &= (L \cap \mathcal{L}) \cup (L \cap \mathcal{R}) \\
+R &= (R \cap \mathcal{L}) \cup (R \cap \mathcal{R})
+\end{aligned}
+$$
+
+Then:
+
+$$
+\begin{aligned}
+L \cap R
+&= \left[(L \cap \mathcal{R}) \cup (L \cap \mathcal{L})\right] 
+   \cap \left[(R \cap \mathcal{R}) \cup (R \cap \mathcal{L})\right] \\
+&= \left[ (L \cap \mathcal{R}) \cup \mathcal{L} \right] 
+   \cap \left[ \mathcal{R} \cup (R \cap \mathcal{L}) \right] \\
+&= \underbrace{(L \cap \mathcal{R} \cap \mathcal{R})}_{=\,L \cap \mathcal{R}} 
+   \cup \underbrace{(L \cap \mathcal{R} \cap R \cap \mathcal{L})}_{=\,\varnothing} 
+   \cup \underbrace{(\mathcal{L} \cap \mathcal{R})}_{=\,\varnothing} 
+   \cup \underbrace{(\mathcal{L} \cap R \cap \mathcal{L})}_{=\,R \cap \mathcal{L}} \\
+&= (L \cap \mathcal{R}) \cup (R \cap \mathcal{L})
+\end{aligned}
+$$
+
+$\mathcal{L}$ and $\mathcal{R}$ are disjoint events, so:
+$$
+\mathbb{P}(L \cap R) = \mathbb{P}(L \cap \mathcal{R}) + \mathbb{P}(R \cap \mathcal{L})
+$$
+
+Now apply the **definition of conditional probability** (if $\mathbb{P}(\mathcal{R}) > 0$ and $\mathbb{P}(\mathcal{L}) > 0$):
+$$
+\mathbb{P}(L \cap \mathcal{R}) = \mathbb{P}(L \mid \mathcal{R}) \cdot \mathbb{P}(\mathcal{R})
+$$
+$$
+\mathbb{P}(R \cap \mathcal{L}) = \mathbb{P}(R \mid \mathcal{L}) \cdot \mathbb{P}(\mathcal{L})
+$$
+
+Note that for symmetry, $\mathbb{P}(L \mid \mathcal{R}) = \mathbb{P}(R \mid \mathcal{L})$, so we can write:
+$$
+p := \mathbb{P}(L \mid \mathcal{R}) = \mathbb{P}(R \mid \mathcal{L})
+$$
+
+Then:
+$$
+\mathbb{P}(L \cap R) = p \cdot \left( \mathbb{P}(\mathcal{R}) + \mathbb{P}(\mathcal{L}) \right) = p
+$$
+Note how $p$ does not depend on the position we choose at the round table. If the first person served sit on our right, then $\mathbb{P}(R)  = \mathbb{P}(\mathcal{R}) = 1$, and with $p := \mathbb{P}(L \mid \mathcal{R}) = \mathbb{P}(L)$ the equation $\mathbb{P}(L \cap R) = p$ still holds. So we can conclude that the probability of being served last is independent of the position we choose at the round table.
+
+</details>
+
+## Python coding challenges
+
+[Coin exchange I](https://leetcode.com/problems/coin-change/)
 
 <details>
-<summary>Coin exchange I</summary>
-
-[leetcode](https://leetcode.com/problems/coin-change/)
+<summary>Source code</summary>
 
 ```python
 from typing import List
@@ -90,10 +179,10 @@ class Solution:
 
 </details>
 
-<details>
-<summary>Coin exchange II</summary>
+[Coin exchange II](https://leetcode.com/problems/coin-change-ii/)
 
-[leetcode](https://leetcode.com/problems/coin-change-ii/)
+<details>
+<summary>Souce code</summary>
 
 ```python
 class Solution:
@@ -121,8 +210,10 @@ class Solution:
 
 </details>
 
+[Twitter](https://leetcode.com/problems/design-twitter/)
+
 <details>
-<summary>Twitter</summary>
+<summary>Source code</summary>
 
 ```python
 class Twitter:
