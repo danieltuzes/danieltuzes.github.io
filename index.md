@@ -18,60 +18,60 @@ Your task is to determine **at which position to sit** in order to **maximize th
 
 **Notation and Observations**: Let us fix a position at the round table and define the following events:
 
-- **\(L\)**: the person to the **left** of us is served **before** we are.  
-- **\(R\)**: the person to the **right** of us is served **before** we are.  
-- **\(\mathcal{L}\)**: the **left side** of the table is served **before** the right side.  
-- **\(\mathcal{R}\)**: the **right side** of the table is served **before** the left side.
+- **$L$**: the person to the **left** of us is served **before** we are.  
+- **$R$**: the person to the **right** of us is served **before** we are.  
+- **$\mathcal{L}$**: the **left side** of the table is served **before** the right side.  
+- **$\mathcal{R}$**: the **right side** of the table is served **before** the left side.
 
 Note that:
 
 - Eventually, one side must be served before us:
 
-  \[
+  $$
   \mathbb{P}(L \cup R) = 1
-  \]
+  $$
 
-- \(\mathcal{L}\) and \(\mathcal{R}\) are disjoint and cover the whole probability space:
+- $\mathcal{L}$ and $\mathcal{R}$ are disjoint and cover the whole probability space:
 
-  \[
+  $$
   \mathcal{L} \cap \mathcal{R} = \varnothing, \quad \mathcal{L} \cup \mathcal{R} = \Omega
-  \]
-  \[
+  $$
+  $$
   \Rightarrow \mathbb{P}(\mathcal{L}) + \mathbb{P}(\mathcal{R}) = 1
-  \]
+  $$
 
 - If a side is served before the other side, then the person on that side is served before us:
 
-  \[
+  $$
   \mathcal{L} \subseteq L, \quad \mathcal{R} \subseteq R
-  \]
+  $$
 
 We want to compute the probability that we are served **last** — that is, both neighbors are served before us:
 
-\[\mathcal{P} := \mathbb{P}(L \cap R)\]
+$$\mathcal{P} := \mathbb{P}(L \cap R)$$
 
-If we plot a graph, we could see that \(L \cap R = (L \cap \mathcal{R}) \cup (R \cap \mathcal{L})\) but let's prove it rigorously.
-We decompose both \(L\) and \(R\) using the partition \(\mathcal{L} \cup \mathcal{R} = \Omega\):
+If we plot a graph, we could see that $L \cap R = (L \cap \mathcal{R}) \cup (R \cap \mathcal{L})$ but let's prove it rigorously.
+We decompose both $L$ and $R$ using the partition $\mathcal{L} \cup \mathcal{R} = \Omega$:
 
-\[\begin{aligned}
-L &= (L \cap \mathcal{L}) \cup (L \cap \mathcal{R}) \\
+$$\begin{aligned}
+L &= (L \cap \mathcal{L}) \cup (L \cap \mathcal{R}) \\\
 R &= (R \cap \mathcal{L}) \cup (R \cap \mathcal{R})
-\end{aligned}\]
+\end{aligned}$$
 
 Then:
 
-\[\begin{aligned}
+$$\begin{aligned}
 L \cap R
 &= \left[(L \cap \mathcal{R}) \cup (L \cap \mathcal{L})\right]
-   \cap \left[(R \cap \mathcal{R}) \cup (R \cap \mathcal{L})\right] \\
+   \cap \left[(R \cap \mathcal{R}) \cup (R \cap \mathcal{L})\right] \\\
 &= \left[ (L \cap \mathcal{R}) \cup \mathcal{L} \right]
-   \cap \left[ \mathcal{R} \cup (R \cap \mathcal{L}) \right] \\
+   \cap \left[ \mathcal{R} \cup (R \cap \mathcal{L}) \right] \\\
 &= \underbrace{(L \cap \mathcal{R} \cap \mathcal{R})}_{=\,L \cap \mathcal{R}}
    \cup \underbrace{(L \cap \mathcal{R} \cap R \cap \mathcal{L})}_{=\,\varnothing}
    \cup \underbrace{(\mathcal{L} \cap \mathcal{R})}_{=\,\varnothing}
-   \cup \underbrace{(\mathcal{L} \cap R \cap \mathcal{L})}_{=\,R \cap \mathcal{L}} \\
+   \cup \underbrace{(\mathcal{L} \cap R \cap \mathcal{L})}_{=\,R \cap \mathcal{L}} \\\
 &= (L \cap \mathcal{R}) \cup (R \cap \mathcal{L})
-\end{aligned}\]
+\end{aligned}$$
 
 $\mathcal{L}$ and $\mathcal{R}$ are disjoint events, so:
 $$
@@ -113,11 +113,11 @@ from functools import lru_cache
 class Solution:
     def __init__(self):
         self.memo = {}
-    
+
     def coinChange2(self, coins: List[int], amount: int) -> int:
          # bottom up
          # coins   1, 2, 7
-         # 1    2    3     4       7    8    9  ...  40 
+         # 1    2    3     4       7    8    9  ...  40
          # 1    1    2     2                                  # not this
          # [1]  [2]  [1,2] [2,2]   []                         # but this
         if amount == 0:
@@ -139,11 +139,11 @@ class Solution:
                    exchngs[i] = exchngs[last_amount] + [coin]
                 elif len(exchngs[i]) > len(exchngs[last_amount]) + 1:
                    exchngs[i] = exchngs[last_amount] + [coin]
-       
+
         length = len(exchngs[amount])
         if length == 0:
             return -1
-    
+
         return length
 
     def coinChange(self, coins: List[int], amount: int) -> int:
@@ -152,11 +152,11 @@ class Solution:
             return 0
         res = self.coinChgLst(coins, amount)
         return len(res) if res is not None else -1
-        
+
     def coinChgLst(self, coins: List[int], amount: int) -> List[int]:
         if amount in self.memo:
             return self.memo[amount]
-        
+
         best = None  # shortest list of coins summing up to amount
         for coin in coins:
 
@@ -171,7 +171,7 @@ class Solution:
                 continue  # no solution for this amount
             if best is None or len(best) > len(cand):
                 best = cand + [coin]
-        
+
         self.memo[amount] = best
         return best
 ```
@@ -190,7 +190,7 @@ class Solution:
             return 1
         coins = sorted(coins, reverse=True)
         exchngs = [0 for i in range(amount+1)]  # at i stores the number of ways to exchange i amount
-        
+
         for coin in coins:
             for i in range(1,amount+1):
                 last_amount = i-coin
@@ -200,10 +200,9 @@ class Solution:
                    exchngs[i] += 1
                 elif exchngs[last_amount] == 0:
                    continue
-                
+
                 exchngs[i] += exchngs[last_amount]
-                
-        
+
         return exchngs[amount]
 ```
 
@@ -223,13 +222,11 @@ class Twitter:
         self.timer = 0
         self.increment = -1  # choose 1 or -1 depending on whether you want to use be memory efficient or time efficient
 
-
     def postTweet(self, userId: int, tweetId: int) -> None:
         self.tweetsByUsers[userId].appendleft(tuple((self.timer, tweetId)))
         self.timer += self.increment
         if len(self.tweetsByUsers[userId]) > 10:
             self.tweetsByUsers[userId].pop()
-
 
     def getNewsFeed(self, userId: int) -> List[int]:
         if self.increment == 1:
@@ -245,7 +242,7 @@ class Twitter:
             ret = sorted(ret, reverse=True)
             ret = [val[1] for val in ret]
             return ret
-        
+
         else:
             ret = []  # list with maxsize 10, (time, tweetId)
             users = list(self.subscripts[userId]) + [userId]
@@ -255,7 +252,7 @@ class Twitter:
                 potentialTweets[user] = self.tweetsByUsers[user].copy()
                 if potentialTweets[user]:
                     heapq.heappush(nominees, potentialTweets[user].popleft() + (user,))
-            
+
             while nominees:
                 _, tweetId, user = heapq.heappop(nominees)
                 ret.append(tweetId)
@@ -263,12 +260,11 @@ class Twitter:
                     heapq.heappush(nominees, potentialTweets[user].popleft() + (user,))
                 if len(ret) == 10:
                     break
-            
+
             return ret
 
     def follow(self, followerId: int, followeeId: int) -> None:
         self.subscripts[followerId].add(followeeId)
-        
 
     def unfollow(self, followerId: int, followeeId: int) -> None:
         self.subscripts[followerId].discard(followeeId)
