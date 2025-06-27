@@ -68,7 +68,7 @@ L \cap R
 &= \left[ (L \cap \mathcal{R}) \cup \mathcal{L} \right]
    \cap \left[ \mathcal{R} \cup (R \cap \mathcal{L}) \right] \\\\
 &= \underbrace{(L \cap \mathcal{R} \cap \mathcal{R})}\_{=L \cap \mathcal{R}}
-   \cup \underbrace{(L \cap \mathcal{R} \cap R \cap \mathcal{L})}\_{\=\,\varnothing}
+   \cup \underbrace{(L \cap \mathcal{R} \cap R \cap \mathcal{L})}\_{=\varnothing}
    \cup \underbrace{(\mathcal{L} \cap \mathcal{R})}\_{=\varnothing}
    \cup \underbrace{(\mathcal{L} \cap R \cap \mathcal{L})}\_{=R \cap \mathcal{L}} \\\\
 &= (L \cap \mathcal{R}) \cup (R \cap \mathcal{L})
