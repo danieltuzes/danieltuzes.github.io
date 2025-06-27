@@ -4,6 +4,9 @@ title: interesting problems
 
 - [Round table serving problem](#round-table-serving-problem)
 - [Python coding challenges](#python-coding-challenges)
+  - [Coin exchange I](#coin-exchange-i)
+  - [Coin exchange II](#coin-exchange-ii)
+  - [Twitter](#twitter)
 
 ## Round table serving problem
 
@@ -102,7 +105,7 @@ Note how $p$ does not depend on the position we choose at the round table. If th
 
 ## Python coding challenges
 
-[Coin exchange I](https://leetcode.com/problems/coin-change/)
+### [Coin exchange I](https://leetcode.com/problems/coin-change/)
 
 <details>
 <summary>Source code</summary>
@@ -179,7 +182,7 @@ class Solution:
 
 </details>
 
-[Coin exchange II](https://leetcode.com/problems/coin-change-ii/)
+### [Coin exchange II](https://leetcode.com/problems/coin-change-ii/)
 
 <details>
 <summary>Souce code</summary>
@@ -210,7 +213,7 @@ class Solution:
 
 </details>
 
-[Twitter](https://leetcode.com/problems/design-twitter/)
+### [Twitter](https://leetcode.com/problems/design-twitter/)
 
 <details>
 <summary>Source code</summary>
