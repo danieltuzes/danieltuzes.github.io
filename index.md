@@ -9,10 +9,6 @@ title: interesting problems
 
 **Problem Statement**: Consider a round table with people sitting at fixed positions. Food is distributed starting from a marked position, the "head" of the table. At each step, the person currently serving chooses to give the food to either the person on their immediate left or right, with equal probability. This process continues: any person who receives the food then chooses left or right with equal probability, and so on. A person may be served multiple times during this process.
 
-$x^2$
-
-$$x^2$$
-
 Your task is to determine **at which position to sit** in order to **maximize the probability of being served last**.
 
 <details><summary>Solution</summary>
