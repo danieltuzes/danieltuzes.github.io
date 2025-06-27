@@ -54,7 +54,7 @@ If we plot a graph, we could see that $L \cap R = (L \cap \mathcal{R}) \cup (R \
 We decompose both $L$ and $R$ using the partition $\mathcal{L} \cup \mathcal{R} = \Omega$:
 
 $$\begin{aligned}
-L &= (L \cap \mathcal{L}) \cup (L \cap \mathcal{R}) \\\
+L &= (L \cap \mathcal{L}) \cup (L \cap \mathcal{R}) \\\\
 R &= (R \cap \mathcal{L}) \cup (R \cap \mathcal{R})
 \end{aligned}$$
 
@@ -63,13 +63,13 @@ Then:
 $$\begin{aligned}
 L \cap R
 &= \left[(L \cap \mathcal{R}) \cup (L \cap \mathcal{L})\right]
-   \cap \left[(R \cap \mathcal{R}) \cup (R \cap \mathcal{L})\right] \\\
+   \cap \left[(R \cap \mathcal{R}) \cup (R \cap \mathcal{L})\right] \\\\
 &= \left[ (L \cap \mathcal{R}) \cup \mathcal{L} \right]
-   \cap \left[ \mathcal{R} \cup (R \cap \mathcal{L}) \right] \\\
+   \cap \left[ \mathcal{R} \cup (R \cap \mathcal{L}) \right] \\\\
 &= \underbrace{(L \cap \mathcal{R} \cap \mathcal{R})}_{=\,L \cap \mathcal{R}}
    \cup \underbrace{(L \cap \mathcal{R} \cap R \cap \mathcal{L})}_{=\,\varnothing}
    \cup \underbrace{(\mathcal{L} \cap \mathcal{R})}_{=\,\varnothing}
-   \cup \underbrace{(\mathcal{L} \cap R \cap \mathcal{L})}_{=\,R \cap \mathcal{L}} \\\
+   \cup \underbrace{(\mathcal{L} \cap R \cap \mathcal{L})}_{=\,R \cap \mathcal{L}} \\\\
 &= (L \cap \mathcal{R}) \cup (R \cap \mathcal{L})
 \end{aligned}$$
 
