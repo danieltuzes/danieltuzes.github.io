@@ -1,7 +1,6 @@
 title: Daniel Tuzes's Site
 description: Personal site hosted with GitHub Pages
 remote_theme: just-the-docs/just-the-docs
-markdown: GFM
 plugins:
   - jekyll-remote-theme
 kramdown:
