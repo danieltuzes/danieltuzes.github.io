@@ -14,8 +14,7 @@ title: interesting problems
 
 Your task is to determine **at which position to sit** in order to **maximize the probability of being served last**.
 
-<details><summary>Solution
-</summary>
+<details><summary markdown="span">Solution</summary>
 
 **Notation and Observations**: Let us fix a position at the round table and define the following events:
 
@@ -107,7 +106,7 @@ Note how $p$ does not depend on the position we choose at the round table. If th
 ### [Coin exchange I](https://leetcode.com/problems/coin-change/)
 
 <details>
-<summary>Source code</summary>
+<summary markdown="0">Source code</summary>
 
 ```python
 from typing import List
