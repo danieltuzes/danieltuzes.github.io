@@ -210,8 +210,7 @@ class Solution:
 
 ### [Twitter](https://leetcode.com/problems/design-twitter/)
 
-<details>
-<summary>Source code</summary>
+<details><summary markdown="span">Source code</summary>
 
 ```python
 class Twitter:
