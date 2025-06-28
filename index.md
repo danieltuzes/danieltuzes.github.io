@@ -81,6 +81,7 @@ $$
 $$
 
 Now apply the **definition of conditional probability** (if $\mathbb{P}(\mathcal{R}) > 0$ and $\mathbb{P}(\mathcal{L}) > 0$):
+
 $$
 \mathbb{P}(L \cap \mathcal{R}) = \mathbb{P}(L \mid \mathcal{R}) \cdot \mathbb{P}(\mathcal{R})
 $$
@@ -89,11 +90,13 @@ $$
 $$
 
 Note that for symmetry, $\mathbb{P}(L \mid \mathcal{R}) = \mathbb{P}(R \mid \mathcal{L})$, so we can write:
+
 $$
 p := \mathbb{P}(L \mid \mathcal{R}) = \mathbb{P}(R \mid \mathcal{L})
 $$
 
 Then:
+
 $$
 \mathbb{P}(L \cap R) = p \cdot \left( \mathbb{P}(\mathcal{R}) + \mathbb{P}(\mathcal{L}) \right) = p
 $$
