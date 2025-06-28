@@ -100,6 +100,7 @@ Then:
 $$
 \mathbb{P}(L \cap R) = p \cdot \left( \mathbb{P}(\mathcal{R}) + \mathbb{P}(\mathcal{L}) \right) = p
 $$
+
 Note how $p$ does not depend on the position we choose at the round table. If the first person served sit on our right, then $\mathbb{P}(R)  = \mathbb{P}(\mathcal{R}) = 1$, and with $p := \mathbb{P}(L \mid \mathcal{R}) = \mathbb{P}(L)$ the equation $\mathbb{P}(L \cap R) = p$ still holds. So we can conclude that the probability of being served last is independent of the position we choose at the round table.
 
 </details>
