@@ -50,7 +50,7 @@ We want to compute the probability that we are served **last** — that is, both
 
 $$\mathcal{P} := \mathbb{P}(L \cap R)$$
 
-If we plot a graph, we could see that $L \cap R = (L \cap \mathcal{R}) \cup (R \cap \mathcal{L})$ but let's prove it rigorously.
+If we plot a Venn diagram, we could see that $L \cap R = (L \cap \mathcal{R}) \cup (R \cap \mathcal{L})$ but let's prove it rigorously.
 We decompose both $L$ and $R$ using the partition $\mathcal{L} \cup \mathcal{R} = \Omega$:
 
 $$\begin{aligned}
