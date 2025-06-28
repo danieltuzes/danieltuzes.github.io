@@ -14,7 +14,9 @@ title: interesting problems
 
 Your task is to determine **at which position to sit** in order to **maximize the probability of being served last**.
 
-<details><summary>Solution</summary>
+<details><summary>
+Solution
+</summary>
 
 **Notation and Observations**: Let us fix a position at the round table and define the following events:
 
