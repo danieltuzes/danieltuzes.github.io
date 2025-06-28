@@ -105,8 +105,7 @@ Note how $p$ does not depend on the position we choose at the round table. If th
 
 ### [Coin exchange I](https://leetcode.com/problems/coin-change/)
 
-<details>
-<summary markdown="0">Source code</summary>
+<details><summary markdown="span">Source code</summary>
 
 ```python
 from typing import List
@@ -182,8 +181,7 @@ class Solution:
 
 ### [Coin exchange II](https://leetcode.com/problems/coin-change-ii/)
 
-<details>
-<summary>Souce code</summary>
+<details><summary markdown="span">Souce code</summary>
 
 ```python
 class Solution:
