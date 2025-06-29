@@ -16,6 +16,11 @@ Your task is to determine **at which position to sit** in order to **maximize th
 
 <details><summary markdown="span">Solution</summary>
 
+We will formulate the following idea:
+regardless where we sit, the only way we can be served last if both of ours neighbours are served before us.
+Once one of our neighbour is served (which side is served first with higher chance depends on our location, but doesn't matter),
+then what is the probability that the other side is served before us? This 2nd part doesn't depend on our location.
+
 **Notation and Observations**: Let us fix a position at the round table and define the following events:
 
 - **$L$**: the person to the **left** of us is served **before** we are.  
@@ -52,7 +57,7 @@ $$\mathcal{P} := \mathbb{P}(L \cap R)$$
 
 Note that $L \cap R = (L \cap \mathcal{R}) \cup (R \cap \mathcal{L})$.
 
-<div class="indent-muted">
+<div class="fs-2 text-grey-dk-100 pl-4" style="border-left: 4px solid #ddd; margin: 1rem 0;" markdown="1">
 
 We could reason with a Venn diagram, but let's show the previous statement formally.
 We decompose both $L$ and $R$ using the partition $\mathcal{L} \cup \mathcal{R} = \Omega$:
@@ -108,7 +113,9 @@ $$
 \mathbb{P}(L \cap R) = p \cdot \left( \mathbb{P}(\mathcal{R}) + \mathbb{P}(\mathcal{L}) \right) = p
 $$
 
-Note how $p$ does not depend on the position we choose at the round table. If the first person served sit on our right, then $\mathbb{P}(R)  = \mathbb{P}(\mathcal{R}) = 1$, and with $p := \mathbb{P}(L \mid \mathcal{R}) = \mathbb{P}(L)$ the equation $\mathbb{P}(L \cap R) = p$ still holds. So we can conclude that the probability of being served last is independent of the position we choose at the round table.
+Note how $p$ does not depend on the position we choose at the round table: it is the probability that once the person on the one side is served, the person on the other side is served before us.
+
+Why the logic applies with the conditional probability even when $\mathbb{P}(\mathcal{R}) > 0$ and $\mathbb{P}(\mathcal{L}) > 0$? If the first person served sit on our right, then $\mathbb{P}(R)  = \mathbb{P}(\mathcal{R}) = 1$, and with $p := \mathbb{P}(L \mid \mathcal{R}) = \mathbb{P}(L)$ the equation $\mathbb{P}(L \cap R) = p$ still holds. So we can conclude that the probability of being served last is independent of the position we choose at the round table.
 
 </details>
 

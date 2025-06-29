@@ -7,7 +7,3 @@ kramdown:
   math_engine: null           # leave $$…$$ untouched
   parse_block_html: true      # look inside <details> … </details>  :contentReference[oaicite:0]{index=0}
   parse_span_html: true       # also parse inside <summary>        :contentReference[oaicite:1]{index=1}
-
-# Use a custom CSS build instead of the default
-sass:
-  style: compressed
