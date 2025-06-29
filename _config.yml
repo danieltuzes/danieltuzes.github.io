@@ -11,7 +11,3 @@ kramdown:
 # Use a custom CSS build instead of the default
 sass:
   style: compressed
-
-just_the_docs:
-  aux_libraries:
-    - "/assets/css/just-the-docs.scss"
